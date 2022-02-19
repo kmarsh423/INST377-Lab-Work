@@ -94,15 +94,11 @@
       transform: translateY(-50%);
   }
 
-  .carousel .carousel_actions button {
+  .carousel .carousel_actions .button {
       border-radius: 5px;
       width: 45px;
       border-color: green;
       font-weight: bold;
-  }
-
-  .carousel .carousel_actions button:hover {
-      background-color: orange;
   }
 
   .carousel .carousel_actions button#carousel_button#prev {
