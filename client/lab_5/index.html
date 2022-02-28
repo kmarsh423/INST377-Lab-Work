@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Kobie Marsh Lab 5: HTML Forms, CSS Frameworks, HTTP Methods</title>
+        <link rel="bulma" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="styles.css"/>
+    </head>
+
+    <body>
+        <header class="food-form-header">     
+            <h1>Kobie Marsh Lab 5</h1>
+        </header>
+        <div class="columns">
+            <div class="container">
+                <form action='https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json' method='get' class='food-form'>
+                    <div class="form-row">
+                        <label for="first-name">First Name</label>
+                        <input id="first-name" name="first-name" type="text"/>
+                        <label for="food-preference">Food Preference</label>
+                        <input id="food-preference" name="food-preference" type="text"/>
+                        <fieldset class="veg-form-row">
+                            <legend>Veggie or Vegan?</legend>
+                            <label for="yes" class="radio-label">Yes</label>
+                            <input id="yes" name="yesorno" type="radio" value="yes">
+                            <label for="no" class="radio-label">No</label>
+                            <input type="radio" name="yesorno" id="no" value="no">
+                        </fieldset>
+                        <button class="button">Submit</button>
+                    </div>    
+                </form>  
+            </div>
+            <div class="container">
+                <form action='' method='get' class='form'>
+                    <div class="form-row">
+                        This is going to be something in two weeks.
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="script.js" charset="utf-8"></script>
+    </body>
+    
+    
+</html>
