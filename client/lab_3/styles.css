@@ -35,7 +35,8 @@
   }
 
   .links {
-      margin-left: auto;
+    color: #FFFF;
+    margin-left: auto;
   }
 
   .header-container {
@@ -87,6 +88,7 @@
   }
   
   .footer-item {
+    font-weight: bold;
     border: 1px solid #fff;
     background-color: #D6E9FE;
     height: 200px;
