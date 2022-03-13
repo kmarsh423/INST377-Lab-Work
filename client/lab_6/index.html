@@ -9,32 +9,36 @@
     <header class="food-form-header">     
       <h1>Kobie Marsh Lab 6</h1>
     </header>
-    <div class="container">
-      <div class="columns">
-          <form action='https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json' method='get' class='form'>
-              <div class="form-row">
+    <div class="wrapper">
+      <div class="container">
+        <div class="columns">
+          <div class="page_item">
+            <form action='/api/foodServicesPG' class='form'>
+                <div class="form-item">
                   <label for="first-name">First Name</label>
                   <input id="first-name" name="first-name" type="text"/>
-                  <label for="food-preference">Food Preference</label>
-                  <input id="food-preference" name="food-preference" type="text"/>
+                </div>
+                <div class="form-item">
+                    <label for="food-preference">Food Preference</label>
+                    <input id="food-preference" name="food-preference" type="text"/>
+                </div>
+                <div class="form-item">
                   <fieldset class="veg-form-row">
-                      <legend>Veggie or Vegan?</legend>
-                      <label for="yes" class="radio-label">Yes</label>
-                      <input id="yes" name="yesorno" type="radio" value="yes">
-                      <label for="no" class="radio-label">No</label>
-                      <input type="radio" name="yesorno" id="no" value="no">
+                        <legend>Veggie or Vegan?</legend>
+                        <label for="yes" class="radio-label">Yes</label>
+                        <input id="yes" name="yesorno" type="radio" value="yes">
+                        <label for="no" class="radio-label">No</label>
+                        <input type="radio" name="yesorno" id="no" value="no">
                   </fieldset>
-                  <button class="submit" type="submit">Submit</button>
-              </div>    
-          </form>  
-      </div>
-      <div class="columns">
-          <form action='https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json' method='get' class='form'>
-              <div class="form-row">
-                  
-              </div>
-          </form>
-          </div>
+                </div>
+                <button class="submit" type="submit">Submit</button>
+              </form>    
+          </div>   
+        </div>
+        <div class="page_item">
+          <h2>Restaurant List</h2>
+          <ul id="resto-list"></ul>
+        </div>
     </div>
     <script src="script.js" charset="utf-8"></script>
   </body>

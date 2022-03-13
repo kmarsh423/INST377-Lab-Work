@@ -16,28 +16,34 @@ body {
 
 .form {
   display:flex;
-  flex-wrap: wrap;
-  background-color: #F6F7F8;
-  border: 1px solid #D6D9DC;
-  border-radius: 7px;
-  padding: 40px;
-  width:fit-content;
+  flex-direction: column;
 }
 
 .food-form-header {
-  display: flex;
-  color: darkslategray;
-  background-color: rgb(255,223,138);
+  display: block;
   margin: 20px 40px;
   margin-bottom: 2.5%;
   padding: 20px;
   border-radius: 3px;
+  color: darkslategray;
+  background-color: rgb(255,223,138);
 }
 
-.form-row {
+.form-item {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 5px;
+}
+
+.page_item {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: #efefef;
+  justify-content: flex-start;
+  margin: 20px;
 }
 
 .form-row label {
@@ -75,19 +81,19 @@ body {
 
 .wrapper {
   display: flex;
+  flex-direction: column;
 }
 
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  column-gap: 20px;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  max-width: 960px;
   margin-top: 25px;
+  justify-content: space-around;
+  display: flex;
 }
 
 .columns {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 35px;
 }
