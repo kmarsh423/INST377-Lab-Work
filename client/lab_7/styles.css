@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: ‘Segoe UI’, Candara, ‘Bitstream Vera Sans’, ‘DejaVu Sans’,
+    ‘Bitsream Vera Sans’, ‘Trebuchet MS’, Verdana, ‘Verdana Ref’, sans-serif;
+  background-color: darkslategray;
+}
+
+/* Page Layout */
+
+.form {
+  display:flex;
+  flex-direction: column;
+}
+
+.food-form-header {
+  display: block;
+  margin: 20px 40px;
+  margin-bottom: 2.5%;
+  padding: 20px;
+  border-radius: 3px;
+  color: darkslategray;
+  background-color: rgb(255,223,138);
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 5px;
+}
+
+.page_item {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: #efefef;
+  justify-content: flex-start;
+  margin: 20px;
+}
+
+.form-row label {
+  margin-bottom: 10px;
+}
+
+.form-row input[type='text'] {
+  background-color: #FFFFFF;
+  border: 1px solid #020303;
+  border-radius: 3px;
+  padding: 5px;
+  margin-bottom: 15%;
+}
+
+.veg-form-row {
+  border: none;
+  margin-bottom: 20px;
+}
+
+.veg-form-row legend {
+  margin-bottom: 15px;
+}
+
+.submit {
+  font-size: 16px;
+  font-weight: bold;
+  color: darkslategray;
+  background-color: rgb(255,223,138);
+  border: none;
+  width: fit-content;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  margin-top: 25px;
+  justify-content: space-around;
+  display: flex;
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 35px;
+}
