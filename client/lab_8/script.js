@@ -1,3 +1,29 @@
+function initMap(id) {
+  const map = L.map(id).setView([38.9072, -76.8721], 9);
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+  }).addTo(map);
+  return map;
+}
+
+function addMapMarkers(map, collection) {
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
+  collection.forEach((item) => {
+    const point = item.geocoded_column_1?.coordinates;
+    console.log(point);
+    L.marker([point[1], point[0]]).addTo(map);
+  });
+}
+
 function getRandomIntInclusive(min, max) {
   const newMin = Math.ceil(min);
   const newMax = Math.floor(max);
@@ -38,46 +64,58 @@ async function mainEvent() { // the async keyword means we can make API requests
 
   const resto = document.querySelector('#resto_name');
   const categ = document.querySelector('#cat');
+  const map = initMap('map');
+  const retId = 'restaurants';
   submit.style.display = 'none';
 
-  const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
-  const arrayFromJson = await results.json(); // This changes it into data we can use - an object
-  // console.log(arrayFromJson.data);
+  if (localStorage.getItem(retId) === undefined) {
+    const results = await fetch('/api/foodServicesPG'); // This accesses some data from our API
+    const arrayFromJson = await results.json(); // This changes it into data we can use - an object
+    console.log(arrayFromJson.data);
+    localStorage.setItem(retId, JSON.stringify(arrayFromJson.data));
+  }
+
+  const storedData = localStorage.getItem(retId);
+  const storedDataArray = JSON.parse(storedData);
+  console.log(storedDataArray);
+  // const arrayFromJson = {data: []}; // TODO: remove debug tool
 
   // To prevent race condition on data load
-  if (arrayFromJson.data.length > 0) {
+  if (storedDataArray.length > 0) {
     submit.style.display = 'block';
 
     let currentArray = [];
     resto.addEventListener('input', async (event) => {
-      if (currentArray === undefined) { return; }
-      console.log(event.target.value);
+    //   if (currentArray === undefined) { return; }
+    //   console.log(event.target.value);
 
-      if (currentArray.length < 1) {
-        return;
-      }
+      //   if (currentArray.length < 1) {
+      //     return;
+      //   }
 
       const match = currentArray.filter((item) => {
         const lowerName = item.name.toLowerCase();
         const lowerValue = event.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
       });
+      addMapMarkers(map, match);
       createHtmlList(match);
     });
 
     categ.addEventListener('input', async (cEvent) => {
-      if (currentArray === undefined) { return; }
-      console.log(cEvent.target.value);
+      // if (currentArray === undefined) { return; }
+      // console.log(cEvent.target.value);
 
-      if (currentArray.length < 1) {
-        return;
-      }
+      // if (currentArray.length < 1) {
+      //   return;
+      // }
 
       const match = currentArray.filter((item) => {
         const lowerName = item.category.toLowerCase();
         const lowerValue = cEvent.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
       });
+      addMapMarkers(map, match);
       createHtmlList(match);
     });
 
@@ -86,9 +124,10 @@ async function mainEvent() { // the async keyword means we can make API requests
       // console.log('form submission'); // this is substituting for a "breakpoint"
       // arrayFromJson.data - we're accessing a key called 'data' on the returned object
       // it contains all 1,000 records we need
-      currentArray = restoArrayMake(arrayFromJson.data);
+      currentArray = restoArrayMake(storedDataArray);
       // const restoArr = dataHandler(arrayFromJson.data);
       createHtmlList(currentArray);
+      addMapMarkers(map, currentArray);
     });
   }
 }

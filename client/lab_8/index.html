@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+        <title>Kobie Marsh Lab 8: JSON to Map Markers</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+        <link rel="stylesheet" href="styles.css"/>
+  </head>
+  <body>
+    <header class="food-form-header">     
+      <h1>Kobie Marsh Lab 8</h1>
+    </header>
+    <div class="wrapper">
+      <div class="container">
+        <div class="columns">
+          <div class="page_item">
+            <form action='/api/foodServicesPG' class='form'>
+                <div class="form-item">
+                  <label for="resto_name">Restaurant Name</label>
+                  <input id="resto_name" name="resto-name" type="text"/>
+                  
+                </div>
+                <div class="form-item">
+                  <label for="cat">Category</label>
+                  <input id="cat" name="category" type="text"/>
+                </div>
+                <button class="submit" type="submit">Change Restaurants</button>
+              </form>    
+          </div>   
+        </div>
+        <div class="page_item page_item_wide">
+          <div id="map"></div>
+          <h2>Restaurant List</h2>
+          <ul id="resto-list"></ul>
+        </div>
+    </div>
+    <script src="script.js" charset="utf-8"></script>
+  </body>
+</html>
